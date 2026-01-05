@@ -1,0 +1,18 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: web-dev
+  namespace: awesomeminecraft-com-dev
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`awesomeminecraft-com.9m.se`)
+      services:
+        - name: web
+          port: 80
+      middlewares:
+        - name: authentik-forwardauth
+  tls:
+    secretName: awesomeminecraft-com-dev-tls

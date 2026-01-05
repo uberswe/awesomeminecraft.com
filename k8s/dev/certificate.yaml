@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: awesomeminecraft-com-dev-tls
+  namespace: awesomeminecraft-com-dev
+spec:
+  secretName: awesomeminecraft-com-dev-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  dnsNames:
+    - awesomeminecraft-com.9m.se

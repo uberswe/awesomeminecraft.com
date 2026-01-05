@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-config
+  namespace: awesomeminecraft-com-dev
+data:
+  PORT: "8080"
+  ENVIRONMENT: "development"
+  BASE_URL: "https://awesomeminecraft-com.9m.se"
