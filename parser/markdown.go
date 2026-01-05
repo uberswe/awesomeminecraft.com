@@ -57,10 +57,14 @@ func parseTableRow(line string, categoryName, categorySlug, subcategoryName, sub
 		return nil
 	}
 
+	// Create URLs slice with the primary URL
+	urls := []models.ResourceLink{{URL: url}}
+
 	return &models.Resource{
 		Name:            name,
 		Slug:            slugify(name),
 		URL:             url,
+		URLs:            urls,
 		Description:     description,
 		Platform:        platform,
 		Audience:        audience,
@@ -201,6 +205,7 @@ func parseResourceFile(filePath string) (*models.Resource, error) {
 	defer file.Close()
 
 	var name, url, description, platform, audience, price string
+	var urls []models.ResourceLink
 	var categoryName, subcategoryName string
 
 	scanner := bufio.NewScanner(file)
@@ -215,13 +220,26 @@ func parseResourceFile(filePath string) (*models.Resource, error) {
 			continue
 		}
 
-		// Parse website URL
+		// Parse website URL(s) - supports multiple **Website:** lines
 		if strings.HasPrefix(line, "**Website:**") {
-			// Extract URL from markdown link [url](url)
+			// Extract URL and label from markdown link [label](url)
 			re := regexp.MustCompile(`\[([^\]]+)\]\(([^)]+)\)`)
 			matches := re.FindStringSubmatch(line)
 			if len(matches) >= 3 {
-				url = matches[2]
+				label := matches[1]
+				linkURL := matches[2]
+				// If label looks like a URL, use empty label (for backward compat)
+				if strings.HasPrefix(label, "http://") || strings.HasPrefix(label, "https://") {
+					label = ""
+				}
+				urls = append(urls, models.ResourceLink{
+					URL:   linkURL,
+					Label: label,
+				})
+				// Set primary URL from first link for backward compatibility
+				if url == "" {
+					url = linkURL
+				}
 			}
 			continue
 		}
@@ -296,6 +314,7 @@ func parseResourceFile(filePath string) (*models.Resource, error) {
 		Name:            name,
 		Slug:            slugify(name),
 		URL:             url,
+		URLs:            urls,
 		Description:     description,
 		Platform:        platform,
 		Audience:        audience,
@@ -307,10 +326,57 @@ func parseResourceFile(filePath string) (*models.Resource, error) {
 	}, nil
 }
 
+// parseCategoryDescription parses a _category.md file and returns the description
+func parseCategoryDescription(filePath string) string {
+	file, err := os.Open(filePath)
+	if err != nil {
+		return ""
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	inFrontmatter := false
+	frontmatterDone := false
+
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		// Check for frontmatter delimiters
+		if strings.TrimSpace(line) == "---" {
+			if !inFrontmatter {
+				inFrontmatter = true
+				continue
+			} else {
+				frontmatterDone = true
+				continue
+			}
+		}
+
+		// Parse frontmatter
+		if inFrontmatter && !frontmatterDone {
+			if strings.HasPrefix(line, "description:") {
+				desc := strings.TrimPrefix(line, "description:")
+				desc = strings.TrimSpace(desc)
+				// Remove surrounding quotes if present
+				desc = strings.Trim(desc, "\"'")
+				return desc
+			}
+		}
+
+		// If we're past frontmatter, first non-empty line is the description
+		if frontmatterDone && strings.TrimSpace(line) != "" {
+			return strings.TrimSpace(line)
+		}
+	}
+
+	return ""
+}
+
 // ParseResourcesDir parses all resource markdown files from the resources directory
 func ParseResourcesDir(dirPath string) (*models.SiteData, error) {
 	// Map to collect resources by category and subcategory
 	categoryMap := make(map[string]*models.Category)
+	categoryDescriptions := make(map[string]string)                   // categorySlug -> description
 	subcategoryMap := make(map[string]map[string]*models.Subcategory) // categorySlug -> subcategorySlug -> Subcategory
 	totalResources := 0
 
@@ -322,6 +388,18 @@ func ParseResourcesDir(dirPath string) (*models.SiteData, error) {
 
 		// Skip directories and non-markdown files
 		if info.IsDir() || !strings.HasSuffix(path, ".md") {
+			return nil
+		}
+
+		// Check for _category.md files
+		if strings.HasSuffix(path, "_category.md") {
+			// Extract category slug from directory name
+			dir := filepath.Dir(path)
+			catSlug := filepath.Base(dir)
+			desc := parseCategoryDescription(path)
+			if desc != "" {
+				categoryDescriptions[catSlug] = desc
+			}
 			return nil
 		}
 
@@ -393,6 +471,12 @@ func ParseResourcesDir(dirPath string) (*models.SiteData, error) {
 			return subcategories[i].Name < subcategories[j].Name
 		})
 		category.Subcategories = subcategories
+
+		// Apply category description if available
+		if desc, exists := categoryDescriptions[catSlug]; exists {
+			category.Description = desc
+		}
+
 		categories = append(categories, *category)
 	}
 

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: General Questions
+    url: mailto:hello@awesomeminecraft.com
+    about: For general questions or inquiries, email us directly
+  - name: Critical Security Issues
+    url: mailto:hello@awesomeminecraft.com
+    about: For critical security vulnerabilities, please email us privately instead of opening a public issue

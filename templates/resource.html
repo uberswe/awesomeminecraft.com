@@ -1,121 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.Resource.Name}} - Awesome Minecraft</title>
-    <meta name="description" content="{{.Resource.Description}}">
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <header class="header">
-        <div class="header-content">
-            <a href="/" class="logo">
-                <span class="logo-icon">&#9632;</span>
-                Awesome Minecraft
-            </a>
-            <form action="/search" method="GET" class="search-form">
-                <input type="text" name="q" placeholder="Search resources..." class="search-input">
-                <button type="submit" class="search-button">Search</button>
-            </form>
-            <a href="https://github.com/uberswe/awesomeminecraft.com" target="_blank" rel="noopener" class="contribute-btn">
-                + Add Resource
-            </a>
-        </div>
-    </header>
-
-    <div class="main-layout">
-        <nav class="sidebar">
-            <h3 class="sidebar-title">Categories</h3>
-            <ul class="category-list">
-                {{range .Categories}}
-                <li>
-                    <a href="/category/{{.Slug}}" class="category-link">
-                        {{.Name}}
-                        <span class="resource-count">{{len .Subcategories}}</span>
-                    </a>
-                </li>
-                {{end}}
-            </ul>
-        </nav>
-
-        <main class="content">
-            <div class="resource-header">
-                <nav class="breadcrumb">
-                    <a href="/">Home</a> / 
-                    <a href="/category/{{.Resource.CategorySlug}}">{{.Resource.CategoryName}}</a> / 
-                    <span>{{.Resource.Name}}</span>
-                </nav>
-                <h1>{{.Resource.Name}}</h1>
-                <a href="{{.Resource.URL}}" target="_blank" rel="noopener" class="resource-url">
-                    {{.Resource.URL}}
-                </a>
-            </div>
-
-            <section class="resource-overview">
-                <h2>Overview</h2>
-                <p class="resource-description-large">{{.Resource.Description}}</p>
-            </section>
-
-            <section class="resource-details">
-                <h2>Details</h2>
-                <div class="details-grid">
-                    <div class="detail-item">
-                        <span class="detail-label">Category</span>
-                        <span class="detail-value">
-                            <a href="/category/{{.Resource.CategorySlug}}">{{.Resource.CategoryName}}</a>
-                        </span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Subcategory</span>
-                        <span class="detail-value">{{.Resource.SubcategoryName}}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Platform</span>
-                        <span class="detail-value">{{.Resource.Platform}}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Audience</span>
-                        <span class="detail-value">{{.Resource.Audience}}</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Price</span>
-                        <span class="detail-value">{{.Resource.Price}}</span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="resource-actions">
-                <a href="{{.Resource.URL}}" target="_blank" rel="noopener" class="action-button primary">
-                    Visit {{.Resource.Name}}
-                </a>
-                <a href="https://github.com/uberswe/awesomeminecraft.com/blob/main/resources/{{.Resource.CategorySlug}}/{{.Resource.Slug}}.md" target="_blank" rel="noopener" class="action-button secondary">
-                    View on GitHub
-                </a>
-            </section>
-
-            <section class="contribute-section">
-                <h2>Improve This Resource</h2>
-                <p>
-                    Have more information about {{.Resource.Name}}? 
-                    Help us improve this page by contributing on GitHub.
-                </p>
-                <a href="https://github.com/uberswe/awesomeminecraft.com/edit/main/resources/{{.Resource.CategorySlug}}/{{.Resource.Slug}}.md" target="_blank" rel="noopener" class="contribute-link">
-                    Edit on GitHub
-                </a>
-            </section>
-        </main>
+{{define "content"}}
+<div class="resource-header">
+    <nav class="breadcrumb">
+        <a href="/">Home</a> /
+        <a href="/category/{{.Resource.CategorySlug}}">{{.Resource.CategoryName}}</a> /
+        <span>{{.Resource.Name}}</span>
+    </nav>
+    <h1>{{.Resource.Name}}</h1>
+    {{if gt (len .Resource.URLs) 1}}
+    <div class="resource-urls">
+        {{range $index, $link := .Resource.URLs}}
+        <a href="/go/{{$.Resource.CategorySlug}}/{{$.Resource.Slug}}/{{$index}}" class="resource-url">
+            {{if $link.Label}}{{$link.Label}}: {{end}}{{$link.URL}}
+        </a>
+        {{end}}
     </div>
+    {{else}}
+    <a href="/go/{{.Resource.CategorySlug}}/{{.Resource.Slug}}" class="resource-url">
+        {{.Resource.URL}}
+    </a>
+    {{end}}
+</div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>
-                <strong>Want to add a resource?</strong>
-                <a href="https://github.com/uberswe/awesomeminecraft.com" target="_blank" rel="noopener">Open a Pull Request on GitHub</a>
-                to contribute to this collection.
-            </p>
-            <p class="footer-stats">{{.TotalResources}}+ curated Minecraft resources</p>
+<section class="resource-overview">
+    <h2>Overview</h2>
+    <p class="resource-description-large">{{.Resource.Description}}</p>
+</section>
+
+<section class="resource-details">
+    <h2>Details</h2>
+    <div class="details-grid">
+        <div class="detail-item">
+            <span class="detail-label">Category</span>
+            <span class="detail-value">
+                <a href="/category/{{.Resource.CategorySlug}}">{{.Resource.CategoryName}}</a>
+            </span>
         </div>
-    </footer>
-</body>
-</html>
+        <div class="detail-item">
+            <span class="detail-label">Subcategory</span>
+            <span class="detail-value">{{.Resource.SubcategoryName}}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Platform</span>
+            <span class="detail-value">{{.Resource.Platform}}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Audience</span>
+            <span class="detail-value">{{.Resource.Audience}}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Price</span>
+            <span class="detail-value">{{.Resource.Price}}</span>
+        </div>
+    </div>
+</section>
+
+<section class="resource-actions">
+    {{if gt (len .Resource.URLs) 1}}
+    {{range $index, $link := .Resource.URLs}}
+    <a href="/go/{{$.Resource.CategorySlug}}/{{$.Resource.Slug}}/{{$index}}" class="action-button primary">
+        {{if $link.Label}}{{$link.Label}}{{else}}Visit {{$.Resource.Name}}{{end}}
+    </a>
+    {{end}}
+    {{else}}
+    <a href="/go/{{.Resource.CategorySlug}}/{{.Resource.Slug}}" class="action-button primary">
+        Visit {{.Resource.Name}}
+    </a>
+    {{end}}
+    <a href="https://github.com/uberswe/awesomeminecraft.com/blob/main/resources/{{.Resource.CategorySlug}}/{{.Resource.Slug}}.md" target="_blank" rel="noopener" class="action-button secondary">
+        View on GitHub
+    </a>
+</section>
+
+<section class="contribute-section">
+    <h2>Improve This Resource</h2>
+    <p>
+        Have more information about {{.Resource.Name}}?
+        Help us improve this page by contributing on GitHub.
+    </p>
+    <a href="https://github.com/uberswe/awesomeminecraft.com/edit/main/resources/{{.Resource.CategorySlug}}/{{.Resource.Slug}}.md" target="_blank" rel="noopener" class="contribute-link">
+        Edit on GitHub
+    </a>
+</section>
+{{end}}
+
+{{template "base" .}}

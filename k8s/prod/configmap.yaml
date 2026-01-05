@@ -6,4 +6,4 @@ metadata:
 data:
   PORT: "8080"
   ENVIRONMENT: "production"
-  BASE_URL: "https://awesomeminecraft.com"
+  BASE_URL: "https://www.awesomeminecraft.com"

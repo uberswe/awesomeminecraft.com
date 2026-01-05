@@ -1,0 +1,25 @@
+{
+  "name": "awesomeminecraft.com",
+  "version": "1.0.0",
+  "description": "A curated collection of **263+ resources** spanning the entire Minecraft ecosystem.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uberswe/awesomeminecraft.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/uberswe/awesomeminecraft.com/issues"
+  },
+  "homepage": "https://github.com/uberswe/awesomeminecraft.com#readme",
+  "dependencies": {
+    "@playwright/test": "^1.57.0",
+    "playwright": "^1.57.0"
+  }
+}

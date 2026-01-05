@@ -1,99 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awesome Minecraft - Curated Minecraft Resources</title>
-    <meta name="description" content="A curated collection of 350+ Minecraft resources for players, builders, server admins, and developers.">
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <header class="header">
-        <div class="header-content">
-            <a href="/" class="logo">
-                <span class="logo-icon">&#9632;</span>
-                Awesome Minecraft
-            </a>
-            <form action="/search" method="GET" class="search-form">
-                <input type="text" name="q" placeholder="Search resources..." class="search-input">
-                <button type="submit" class="search-button">Search</button>
-            </form>
-            <a href="https://github.com/uberswe/awesomeminecraft.com" target="_blank" rel="noopener" class="contribute-btn">
-                + Add Resource
-            </a>
-        </div>
-    </header>
+{{define "content"}}
+<div class="hero">
+    <h1>Awesome Minecraft Resources</h1>
+    <p class="hero-subtitle">
+        A comprehensive collection of <strong>{{.TotalResources}}+ curated resources</strong> spanning the entire Minecraft ecosystem—from casual player tools to advanced developer libraries.
+    </p>
+    <p class="hero-description">
+        Covering both Java and Bedrock editions, serving players, builders, server administrators, and developers alike.
+    </p>
+</div>
 
-    <div class="main-layout">
-        <nav class="sidebar">
-            <h3 class="sidebar-title">Categories</h3>
-            <ul class="category-list">
-                {{range .Categories}}
-                <li>
-                    <a href="/category/{{.Slug}}" class="category-link">
-                        {{.Name}}
-                        <span class="resource-count">{{len .Subcategories}}</span>
-                    </a>
-                </li>
+<section class="categories-section">
+    <h2>Browse by Category</h2>
+    <div class="category-grid">
+        {{range .Categories}}
+        <a href="/category/{{.Slug}}" class="category-card">
+            <h3>{{.Name}}</h3>
+            <p class="subcategory-count">{{len .Subcategories}} subcategories</p>
+            <ul class="subcategory-preview">
+                {{range $i, $sub := .Subcategories}}
+                {{if lt $i 3}}
+                <li>{{$sub.Name}}</li>
+                {{end}}
+                {{end}}
+                {{if gt (len .Subcategories) 3}}
+                <li class="more">+{{subtract (len .Subcategories) 3}} more</li>
                 {{end}}
             </ul>
-        </nav>
-
-        <main class="content">
-            <div class="hero">
-                <h1>Awesome Minecraft Resources</h1>
-                <p class="hero-subtitle">
-                    A comprehensive collection of <strong>{{.TotalResources}}+ curated resources</strong> spanning the entire Minecraft ecosystem—from casual player tools to advanced developer libraries.
-                </p>
-                <p class="hero-description">
-                    Covering both Java and Bedrock editions, serving players, builders, server administrators, and developers alike.
-                </p>
-            </div>
-
-            <section class="categories-section">
-                <h2>Browse by Category</h2>
-                <div class="category-grid">
-                    {{range .Categories}}
-                    <a href="/category/{{.Slug}}" class="category-card">
-                        <h3>{{.Name}}</h3>
-                        <p class="subcategory-count">{{len .Subcategories}} subcategories</p>
-                        <ul class="subcategory-preview">
-                            {{range $i, $sub := .Subcategories}}
-                            {{if lt $i 3}}
-                            <li>{{$sub.Name}}</li>
-                            {{end}}
-                            {{end}}
-                            {{if gt (len .Subcategories) 3}}
-                            <li class="more">+{{subtract (len .Subcategories) 3}} more</li>
-                            {{end}}
-                        </ul>
-                    </a>
-                    {{end}}
-                </div>
-            </section>
-
-            <section class="contribute-section">
-                <h2>Contribute</h2>
-                <p>
-                    Know a great Minecraft resource that's missing from this list?
-                    We welcome contributions from the community!
-                </p>
-                <a href="https://github.com/uberswe/awesomeminecraft.com" target="_blank" rel="noopener" class="contribute-link">
-                    Open a Pull Request on GitHub
-                </a>
-            </section>
-        </main>
+        </a>
+        {{end}}
     </div>
+</section>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>
-                <strong>Want to add a resource?</strong>
-                <a href="https://github.com/uberswe/awesomeminecraft.com" target="_blank" rel="noopener">Open a Pull Request on GitHub</a>
-                to contribute to this collection.
-            </p>
-            <p class="footer-stats">{{.TotalResources}}+ curated Minecraft resources</p>
-        </div>
-    </footer>
-</body>
-</html>
+<section class="contribute-section">
+    <h2>Contribute</h2>
+    <p>
+        Know a great Minecraft resource that's missing from this list?
+        We welcome contributions from the community!
+    </p>
+    <a href="https://github.com/uberswe/awesomeminecraft.com" target="_blank" rel="noopener" class="contribute-link">
+        Open a Pull Request on GitHub
+    </a>
+</section>
+{{end}}
+
+{{template "base" .}}
