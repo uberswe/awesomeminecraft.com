@@ -8,11 +8,11 @@
 ![Java Edition](https://img.shields.io/badge/Java_Edition-EC8E2C?style=for-the-badge&logo=coffeescript&logoColor=white)
 ![Bedrock Edition](https://img.shields.io/badge/Bedrock_Edition-8B7355?style=for-the-badge&logo=xbox&logoColor=white)
 
-![Resources](https://img.shields.io/badge/Resources-263+-4ade80?style=for-the-badge)
+![Resources](https://img.shields.io/badge/Resources-272+-4ade80?style=for-the-badge)
 ![Categories](https://img.shields.io/badge/Categories-13-22c55e?style=for-the-badge)
 ![Community](https://img.shields.io/badge/Community-Driven-166534?style=for-the-badge&logo=github&logoColor=white)
 
-A curated collection of **263+ resources** spanning the entire Minecraft ecosystem.
+A curated collection of **272+ resources** spanning the entire Minecraft ecosystem.
 
 **[Visit the Website](https://www.awesomeminecraft.com)** | **[Add a Resource](https://github.com/uberswe/awesomeminecraft.com/pulls)**
 
@@ -360,6 +360,14 @@ A curated collection of **263+ resources** spanning the entire Minecraft ecosyst
 - [Minecraft Schematics](resources/world-editing-building/minecraft-schematics.md) - Repository of 19,000+ community schematics
 - [Planet Minecraft Schematics](resources/world-editing-building/planet-minecraft-schematics.md) - Thousands of Litematica files
 - [CreateMod.com Schematics](resources/world-editing-building/createmod-schematics.md) - Create mod schematic repository for contraption designs
+- [Schematic Lab](resources/world-editing-building/schematic-lab.md) - Web-based schematic format converter for different versions
+- [Schematic Cloud](resources/world-editing-building/schematic-cloud.md) - Cloud schematic hosting with WorldEdit server integration
+- [Cubical](resources/world-editing-building/cubical.md) - Advanced online editor/viewer for schematics and NBT files
+- [Blueprint](resources/world-editing-building/blueprint-create.md) - All-in-one Create Mod resource site
+
+#### Building Guides
+
+- [Build It](resources/world-editing-building/build-it.md) - Minecraft building tutorials and guides
 
 #### Map Downloads
 
@@ -405,6 +413,7 @@ A curated collection of **263+ resources** spanning the entire Minecraft ecosyst
 - [Bedrock Wiki](resources/community-documentation/bedrock-wiki.md) - Community documentation for Bedrock add-ons
 - [wiki.vg](resources/community-documentation/wiki-vg.md) - Technical protocol documentation
 - [BlocksItems.com](resources/community-documentation/blocksitems.md) - Database of vanilla and modded Minecraft blocks and items
+- [setup.md](resources/community-documentation/setup-md.md) - Community server admin wiki by Admincraft covering all key areas
 
 #### Reddit Communities
 
@@ -418,6 +427,7 @@ A curated collection of **263+ resources** spanning the entire Minecraft ecosyst
 
 - [Official Minecraft Discord](resources/community-documentation/official-minecraft-discord.md) - Official Mojang server (2.8M+ members)
 - [Admincraft Discord](resources/community-documentation/admincraft-discord.md) - Server admin community
+- [HowieCraft Discord](resources/community-documentation/howiecraft-discord.md) - Community Discord for sharing resources and builds
 
 #### Content Creator Tools
 
@@ -460,6 +470,11 @@ A curated collection of **263+ resources** spanning the entire Minecraft ecosyst
 #### Immersive Engineering
 
 - [Just Enough Immersive Multiblocks](resources/calculators-tools/just-enough-immersive-multiblocks.md) - JEI/EMI support for all IE multiblocks (13.1M downloads)
+
+#### Create Mod Tools
+
+- [Create Mod Calculator](resources/calculators-tools/create-mod-calculator.md) - Calculator for Create mod mechanics and contraptions
+- [Create Schematic Parser](resources/calculators-tools/create-schematic-parser.md) - Analyzes Create schematics for required mods and versions
 
 ### Servers
 
