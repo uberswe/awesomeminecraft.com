@@ -159,6 +159,30 @@ func drawStatsBox(dc *gg.Context, x, y, width, height float64, value, label stri
 	dc.DrawStringAnchored(label, x+width/2, y+height*0.75, 0.5, 0.5)
 }
 
+// drawStatsBoxLarge draws a larger statistics box with bigger text
+func drawStatsBoxLarge(dc *gg.Context, x, y, width, height float64, value, label string) {
+	// Box background
+	dc.SetColor(ColorCardBg)
+	dc.DrawRoundedRectangle(x, y, width, height, 12)
+	dc.Fill()
+
+	// Border
+	dc.SetColor(ColorAccent)
+	dc.SetLineWidth(4)
+	dc.DrawRoundedRectangle(x, y, width, height, 12)
+	dc.Stroke()
+
+	// Value - large text
+	dc.SetColor(ColorTextPrimary)
+	loadFont(dc, FontLarge)
+	dc.DrawStringAnchored(value, x+width/2, y+height*0.4, 0.5, 0.5)
+
+	// Label - medium text
+	dc.SetColor(ColorTextMuted)
+	loadFont(dc, FontMedium)
+	dc.DrawStringAnchored(label, x+width/2, y+height*0.75, 0.5, 0.5)
+}
+
 // GenerateHome creates the home page OG image
 func (g *Generator) GenerateHome(totalResources, categoryCount int) image.Image {
 	dc := gg.NewContext(Width, Height)
@@ -212,14 +236,14 @@ func (g *Generator) GenerateCategory(name string, resourceCount int, subcategori
 	drawGradientBackground(dc)
 
 	// Top branding
-	drawTextLeft(dc, "awesomeminecraft.com", 40, 45, ColorTextMuted, FontTiny)
+	drawTextLeft(dc, "awesomeminecraft.com", 60, 55, ColorTextMuted, FontSmall)
 
 	// Category name
-	drawTextCentered(dc, name, 200, ColorAccent, FontHuge)
+	drawTextCentered(dc, name, 220, ColorAccent, FontHuge)
 
 	// Resource count
 	countText := strconv.Itoa(resourceCount) + " Resources"
-	drawTextCentered(dc, countText, 290, ColorTextPrimary, FontLarge)
+	drawTextCentered(dc, countText, 320, ColorTextPrimary, FontLarge)
 
 	// Subcategory preview
 	if len(subcategories) > 0 {
@@ -231,14 +255,14 @@ func (g *Generator) GenerateCategory(name string, resourceCount int, subcategori
 		if len(subcategories) > 3 {
 			preview += "  •  ..."
 		}
-		drawTextCentered(dc, preview, 380, ColorTextMuted, FontSmall)
+		drawTextCentered(dc, preview, 420, ColorTextMuted, FontMedium)
 	}
 
 	// Bottom accent
 	drawBottomAccent(dc)
 
 	// Branding
-	drawTextCentered(dc, "awesomeminecraft.com", float64(Height)-35, ColorTextMuted, FontTiny)
+	drawTextCentered(dc, "awesomeminecraft.com", float64(Height)-40, ColorTextMuted, FontSmall)
 
 	return dc.Image()
 }
@@ -250,38 +274,38 @@ func (g *Generator) GenerateResource(name, description, category, platform, audi
 	// Background
 	drawGradientBackground(dc)
 
-	// Breadcrumb
-	drawTextLeft(dc, category, 40, 45, ColorTextMuted, FontTiny)
+	// Breadcrumb - category path
+	drawTextLeft(dc, category, 60, 55, ColorTextMuted, FontSmall)
 
 	// Resource name - truncate if needed
-	if len(name) > 35 {
-		name = name[:32] + "..."
+	if len(name) > 30 {
+		name = name[:27] + "..."
 	}
 	drawTextCentered(dc, name, 150, ColorAccent, FontHuge)
 
-	// Description - truncate if needed
-	if len(description) > 80 {
-		description = description[:77] + "..."
-	}
-	drawTextCentered(dc, description, 230, ColorTextPrimary, FontSmall)
+	// Description - multi-line wrapped text
+	dc.SetColor(ColorTextPrimary)
+	loadFont(dc, FontSmall)
+	maxWidth := float64(Width) - 120 // 60px padding on each side
+	dc.DrawStringWrapped(description, float64(Width)/2, 240, 0.5, 0, maxWidth, 1.4, gg.AlignCenter)
 
-	// Metadata badges
-	boxWidth := 280.0
-	boxHeight := 90.0
-	boxY := 310.0
+	// Metadata badges - larger boxes
+	boxWidth := 300.0
+	boxHeight := 120.0
+	boxY := 360.0
 	gap := 40.0
 	totalWidth := 3*boxWidth + 2*gap
 	startX := (float64(Width) - totalWidth) / 2
 
-	drawStatsBox(dc, startX, boxY, boxWidth, boxHeight, platform, "Platform")
-	drawStatsBox(dc, startX+boxWidth+gap, boxY, boxWidth, boxHeight, audience, "Audience")
-	drawStatsBox(dc, startX+2*(boxWidth+gap), boxY, boxWidth, boxHeight, price, "Price")
+	drawStatsBoxLarge(dc, startX, boxY, boxWidth, boxHeight, platform, "Platform")
+	drawStatsBoxLarge(dc, startX+boxWidth+gap, boxY, boxWidth, boxHeight, audience, "Audience")
+	drawStatsBoxLarge(dc, startX+2*(boxWidth+gap), boxY, boxWidth, boxHeight, price, "Price")
 
 	// Bottom accent
 	drawBottomAccent(dc)
 
 	// Branding
-	drawTextCentered(dc, "awesomeminecraft.com", float64(Height)-35, ColorTextMuted, FontTiny)
+	drawTextCentered(dc, "awesomeminecraft.com", float64(Height)-40, ColorTextMuted, FontSmall)
 
 	return dc.Image()
 }
@@ -293,29 +317,29 @@ func (g *Generator) GenerateSearch(totalResources, categoryCount int) image.Imag
 	// Background
 	drawGradientBackground(dc)
 
-	// Search icon (magnifying glass)
+	// Search icon (magnifying glass) - larger
 	dc.SetColor(ColorAccent)
-	dc.DrawCircle(float64(Width)/2, 120, 50)
-	dc.SetLineWidth(6)
+	dc.DrawCircle(float64(Width)/2, 130, 60)
+	dc.SetLineWidth(8)
 	dc.Stroke()
-	dc.DrawLine(float64(Width)/2+38, 158, float64(Width)/2+70, 190)
+	dc.DrawLine(float64(Width)/2+45, 175, float64(Width)/2+85, 215)
 	dc.Stroke()
 
 	// Title
-	drawTextCentered(dc, "Search Resources", 270, ColorAccent, FontHuge)
+	drawTextCentered(dc, "Search Resources", 300, ColorAccent, FontHuge)
 
 	// Subtitle
-	drawTextCentered(dc, "Find plugins, mods, tools, and more", 350, ColorTextPrimary, FontLarge)
+	drawTextCentered(dc, "Find plugins, mods, tools, and more", 390, ColorTextPrimary, FontLarge)
 
 	// Stats
 	statsText := strconv.Itoa(totalResources) + "+ Resources  •  " + strconv.Itoa(categoryCount) + " Categories"
-	drawTextCentered(dc, statsText, 430, ColorTextMuted, FontMedium)
+	drawTextCentered(dc, statsText, 470, ColorTextMuted, FontMedium)
 
 	// Bottom accent
 	drawBottomAccent(dc)
 
 	// Branding
-	drawTextCentered(dc, "awesomeminecraft.com", float64(Height)-35, ColorTextMuted, FontTiny)
+	drawTextCentered(dc, "awesomeminecraft.com", float64(Height)-40, ColorTextMuted, FontSmall)
 
 	return dc.Image()
 }
