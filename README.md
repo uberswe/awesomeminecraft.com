@@ -1,8 +1,20 @@
 # Awesome Minecraft Resources
 
+[![Build Status](https://github.com/uberswe/awesomeminecraft.com/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/uberswe/awesomeminecraft.com/actions/workflows/build-and-deploy.yml)
+[![Go Version](https://img.shields.io/badge/Go-1.24-00ADD8?style=flat&logo=go&logoColor=white)](https://go.dev/)
+[![Website](https://img.shields.io/badge/Website-Live-4ade80?style=flat&logo=safari&logoColor=white)](https://www.awesomeminecraft.com)
+
+![Minecraft](https://img.shields.io/badge/Minecraft-62B47A?style=for-the-badge&logo=minecraft&logoColor=white)
+![Java Edition](https://img.shields.io/badge/Java_Edition-EC8E2C?style=for-the-badge&logo=coffeescript&logoColor=white)
+![Bedrock Edition](https://img.shields.io/badge/Bedrock_Edition-8B7355?style=for-the-badge&logo=xbox&logoColor=white)
+
+![Resources](https://img.shields.io/badge/Resources-263+-4ade80?style=for-the-badge)
+![Categories](https://img.shields.io/badge/Categories-13-22c55e?style=for-the-badge)
+![Community](https://img.shields.io/badge/Community-Driven-166534?style=for-the-badge&logo=github&logoColor=white)
+
 A curated collection of **263+ resources** spanning the entire Minecraft ecosystem.
 
-**[Visit the Website](https://awesomeminecraft.com)** | **[Add a Resource](https://github.com/uberswe/awesomeminecraft.com/pulls)**
+**[Visit the Website](https://www.awesomeminecraft.com)** | **[Add a Resource](https://github.com/uberswe/awesomeminecraft.com/pulls)**
 
 ---
 
