@@ -21,7 +21,7 @@ spec:
         - name: ghcr-pull-secret
       containers:
         - name: web
-          image: ghcr.io/uberswe/awesomeminecraft.com:main-b787712
+          image: ghcr.io/uberswe/awesomeminecraft.com:main-f8aa824
           ports:
             - containerPort: 8080
           envFrom:
