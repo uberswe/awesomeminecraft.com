@@ -363,6 +363,7 @@ A curated collection of **272+ resources** spanning the entire Minecraft ecosyst
 - [Schematic Lab](resources/world-editing-building/schematic-lab.md) - Web-based schematic format converter for different versions
 - [Schematic Cloud](resources/world-editing-building/schematic-cloud.md) - Cloud schematic hosting with WorldEdit server integration
 - [Cubical](resources/world-editing-building/cubical.md) - Advanced online editor/viewer for schematics and NBT files
+- [BlockMosaic](resources/world-editing-building/blockmosaic.md) - Convert images to Minecraft blocks and export .litematic/.schem/.mcfunction, plus a Litematica-to-Schematic converter
 - [Blueprint](resources/world-editing-building/blueprint-create.md) - All-in-one Create Mod resource site
 
 #### Building Guides
