@@ -413,6 +413,7 @@ A curated collection of **272+ resources** spanning the entire Minecraft ecosyst
 - [Bedrock Wiki](resources/community-documentation/bedrock-wiki.md) - Community documentation for Bedrock add-ons
 - [wiki.vg](resources/community-documentation/wiki-vg.md) - Technical protocol documentation
 - [BlocksItems.com](resources/community-documentation/blocksitems.md) - Database of vanilla and modded Minecraft blocks and items
+- [Cobblewiki](resources/community-documentation/cobblewiki.md) - Cobblemon wiki and Pokédex with source-derived gameplay data
 - [setup.md](resources/community-documentation/setup-md.md) - Community server admin wiki by Admincraft covering all key areas
 
 #### Reddit Communities
