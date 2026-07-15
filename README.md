@@ -364,6 +364,7 @@ A curated collection of **272+ resources** spanning the entire Minecraft ecosyst
 - [Schematic Cloud](resources/world-editing-building/schematic-cloud.md) - Cloud schematic hosting with WorldEdit server integration
 - [Cubical](resources/world-editing-building/cubical.md) - Advanced online editor/viewer for schematics and NBT files
 - [Blueprint](resources/world-editing-building/blueprint-create.md) - All-in-one Create Mod resource site
+- [BlockMosaic](resources/world-editing-building/blockmosaic.md) - Converts images into Minecraft block pixel art / map art, with block shopping lists and .litematic/.schem export
 
 #### Building Guides
 
