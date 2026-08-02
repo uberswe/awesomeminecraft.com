@@ -8,11 +8,11 @@
 ![Java Edition](https://img.shields.io/badge/Java_Edition-EC8E2C?style=for-the-badge&logo=coffeescript&logoColor=white)
 ![Bedrock Edition](https://img.shields.io/badge/Bedrock_Edition-8B7355?style=for-the-badge&logo=xbox&logoColor=white)
 
-![Resources](https://img.shields.io/badge/Resources-272+-4ade80?style=for-the-badge)
+![Resources](https://img.shields.io/badge/Resources-273+-4ade80?style=for-the-badge)
 ![Categories](https://img.shields.io/badge/Categories-13-22c55e?style=for-the-badge)
 ![Community](https://img.shields.io/badge/Community-Driven-166534?style=for-the-badge&logo=github&logoColor=white)
 
-A curated collection of **272+ resources** spanning the entire Minecraft ecosystem.
+A curated collection of **273+ resources** spanning the entire Minecraft ecosystem.
 
 **[Visit the Website](https://www.awesomeminecraft.com)** | **[Add a Resource](https://github.com/uberswe/awesomeminecraft.com/pulls)**
 
@@ -259,6 +259,7 @@ A curated collection of **272+ resources** spanning the entire Minecraft ecosyst
 
 #### Server Lists
 
+- [AnyServer.pro](resources/hosting-infrastructure/anyserver-pro.md) - Modern directory focusing on smaller, community-oriented servers
 - [Minecraft-MP](resources/hosting-infrastructure/minecraft-mp.md) - One of the largest server lists with statistics
 - [MCList.gg](resources/hosting-infrastructure/mclist-gg.md) - Modern directory with 10,000+ servers
 - [TopG](resources/hosting-infrastructure/topg.md) - Long-established gaming server list
