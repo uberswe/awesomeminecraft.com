@@ -8,7 +8,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`awesomeminecraft-com.9m.se`)
+      match: Host(`dev.awesomeminecraft.com`)
       services:
         - name: web
           port: 80

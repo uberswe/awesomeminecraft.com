@@ -6,4 +6,4 @@ metadata:
 data:
   PORT: "8080"
   ENVIRONMENT: "development"
-  BASE_URL: "https://awesomeminecraft-com.9m.se"
+  BASE_URL: "https://dev.awesomeminecraft.com"
