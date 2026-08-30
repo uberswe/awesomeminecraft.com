@@ -37,6 +37,7 @@ A curated collection of **272+ resources** spanning the entire Minecraft ecosyst
 - [PMCSkin3D](resources/player-customization/pmcskin3d.md) - Advanced 3D skin editor with pose mode and layers
 - [NeedCoolerShoes](resources/player-customization/needcoolershoes.md) - Layer-first design with blend palettes
 - [Tynker Skin Editor](resources/player-customization/tynker-skin-editor.md) - Beginner-friendly with texture brush feature
+- [Minecraft Skin Lab](resources/player-customization/minecraft-skin-lab.md) - 3D painting editor with mirror mode, layers, and HD 128x128 export; no login required
 
 #### Cape Mods & Cosmetics
 
