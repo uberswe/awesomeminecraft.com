@@ -444,6 +444,7 @@ A curated collection of **272+ resources** spanning the entire Minecraft ecosyst
 
 #### Universal Tools
 
+- [MCSift Nether Portal Calculator](resources/calculators-tools/mcsift-nether-portal-calculator.md) - Free browser tool for converting Overworld and Nether X/Z coordinates at the default 8:1 scale
 - [Just Enough Calculation (JEC)](resources/calculators-tools/just-enough-calculation.md) - Essential in-game mod that recursively calculates total resources needed for any recipe (20M+ downloads)
 - [CalcMod](resources/calculators-tools/calcmod.md) - Chat-based calculations for material breakdowns, coordinate conversions, and farm rates
 - [ForgeWeaver](resources/calculators-tools/forgeweaver.md) - Node-based diagram tool for recipe visualization and resource calculation
