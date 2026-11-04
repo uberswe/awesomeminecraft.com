@@ -444,6 +444,7 @@ A curated collection of **272+ resources** spanning the entire Minecraft ecosyst
 
 #### Universal Tools
 
+- [AvaKraft](resources/calculators-tools/avakraft.md) - Free browser-based Minecraft Java 1.21.11 banner maker with material list and loom steps
 - [Just Enough Calculation (JEC)](resources/calculators-tools/just-enough-calculation.md) - Essential in-game mod that recursively calculates total resources needed for any recipe (20M+ downloads)
 - [CalcMod](resources/calculators-tools/calcmod.md) - Chat-based calculations for material breakdowns, coordinate conversions, and farm rates
 - [ForgeWeaver](resources/calculators-tools/forgeweaver.md) - Node-based diagram tool for recipe visualization and resource calculation
