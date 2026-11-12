@@ -62,6 +62,8 @@ A curated collection of **272+ resources** spanning the entire Minecraft ecosyst
 
 #### Modpack Launchers
 
+- [CTF Launcher](resources/mods-modding/ctf-launcher.md) - Java instance manager with DNA links for sharing exact modpack versions and selected configs; free with optional Premium
+
 - [Prism Launcher](resources/mods-modding/prism-launcher.md) - Top community choice—open-source MultiMC fork with CurseForge/Modrinth support
 - [ATLauncher](resources/mods-modding/atlauncher.md) - Lightweight launcher with 150+ built-in modpacks
 - [GDLauncher Carbon](resources/mods-modding/gdlauncher-carbon.md) - Modern launcher with automatic Java management
