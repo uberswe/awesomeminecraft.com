@@ -444,6 +444,7 @@ A curated collection of **272+ resources** spanning the entire Minecraft ecosyst
 
 #### Universal Tools
 
+- [Minecraft Enchantment Calculator](resources/calculators-tools/minecraft-enchantment-calculator.md) - Free browser calculator for enchanting-table odds and anvil order
 - [Just Enough Calculation (JEC)](resources/calculators-tools/just-enough-calculation.md) - Essential in-game mod that recursively calculates total resources needed for any recipe (20M+ downloads)
 - [CalcMod](resources/calculators-tools/calcmod.md) - Chat-based calculations for material breakdowns, coordinate conversions, and farm rates
 - [ForgeWeaver](resources/calculators-tools/forgeweaver.md) - Node-based diagram tool for recipe visualization and resource calculation
